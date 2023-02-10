@@ -20,6 +20,8 @@
 use std::{str, slice};
 use std::char::decode_utf16;
 use std::convert::TryFrom;
+use const_env::from_env;
+
 use crate::object::Object;
 use crate::number::Number;
 use crate::{JsonValue, Error, Result};
@@ -30,6 +32,7 @@ const MAX_PRECISION: u64 = 576460752303423500;
 
 
 // How many nested Objects/Arrays are allowed to be parsed
+#[from_env("RUST_JSON_DEPTH_LIMIT")]
 const DEPTH_LIMIT: usize = 512;
 
 
